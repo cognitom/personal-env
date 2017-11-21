@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Variables
 USER_NAME="cognitom"
 GIT_USER_NAME="Tsutomu Kawamura"
