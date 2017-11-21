@@ -7,7 +7,7 @@
 Run [init.sh](init.sh) script:
 
 ```bash
-$ https://raw.githubusercontent.com/cognitom/personal-env/master/remote/init.sh | sh
+$ curl https://raw.githubusercontent.com/cognitom/personal-env/master/remote/init.sh | sh
 ```
 
 Do some tasks which need interaction.
