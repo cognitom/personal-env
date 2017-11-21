@@ -14,6 +14,11 @@ Do some tasks which need interaction.
 
 ```bash
 $ kr pair
+```
+
+If you have not set a public key on GitHub yet, run this command, too:
+
+```bash
 $ kr github
 ```
 
