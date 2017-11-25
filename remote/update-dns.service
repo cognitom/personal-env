@@ -1,0 +1,10 @@
+[Unit]
+Description=Update A record for this instance on Cloud DNS
+
+[Service]
+ExecStart=/usr/local/bin/update-dns.sh
+Restart=no
+Type=simple
+
+[Install]
+WantedBy=multi-user.target
