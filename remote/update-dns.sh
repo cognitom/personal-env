@@ -16,7 +16,7 @@ COMMAND="instance/network-interfaces/0/access-configs/0/external-ip"
 CURRENT_ADDRESS=$(curl "${API_ROOT}/${COMMAND}" -H "Metadata-Flavor: Google")
 
 # Update Cloud DNS
-$TEMP=$(mktemp)
+$TEMP=$(mktemp -u)
 gcloud dns record-sets transaction start -z "${ZONENAME}" --transaction-file="${TEMP}"
 gcloud dns record-sets transaction remove -z "${ZONENAME}" --transaction-file="${TEMP}" \
   --name "${HOSTNAME}.${ZONE}." --ttl 300 --type A "$LAST_ADDRESS"
