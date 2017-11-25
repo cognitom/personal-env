@@ -40,8 +40,8 @@ git config --global user.email "$GIT_USER_EMAIL"
 curl https://raw.githubusercontent.com/cognitom/personal-env/master/remote/update-dns.sh > update-dns.sh
 curl https://raw.githubusercontent.com/cognitom/personal-env/master/remote/update-dns.service > update-dns.service
 chmod 755 update-dns.sh
-chmod 664 update-dns.sh
+chmod 664 update-dns.service
 sudo chown root:root update-dns.sh update-dns.service
-sudo mv update-dns.sh /usr/bin/local/
+sudo mv update-dns.sh /usr/local/bin/
 sudo mv update-dns.service /etc/systemd/system/
 sudo systemctl enable update-dns
