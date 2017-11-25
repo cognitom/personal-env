@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Variables
 USER_NAME="cognitom"
 GIT_USER_NAME="Tsutomu Kawamura"
@@ -25,6 +27,7 @@ sudo npm i -g npm-check-updates
 
 ## Bash
 printf "\n\n# Simplify my prompt.\nPS1_DEFAULT=\$PS1\nPS1='\$ '" >> ~/.bashrc
+source ~/.bashrc
 
 ## Git
 git config --global user.name "$GIT_USER_NAME"

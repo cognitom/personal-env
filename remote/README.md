@@ -7,13 +7,18 @@
 Run [init.sh](init.sh) script:
 
 ```bash
-$ https://raw.githubusercontent.com/cognitom/personal-env/master/remote/init.sh | sh
+$ curl https://raw.githubusercontent.com/cognitom/personal-env/master/remote/init.sh | sh
 ```
 
 Do some tasks which need interaction.
 
 ```bash
 $ kr pair
+```
+
+If you have not set a public key on GitHub yet, run this command, too:
+
+```bash
 $ kr github
 ```
 
