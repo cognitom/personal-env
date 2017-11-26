@@ -11,9 +11,9 @@ HOSTNAME=$(hostname)
 LAST_ADDRESS=$(host "${HOSTNAME}.${ZONE}." | sed -rn 's@^.* has address @@p')
 
 # Get the current ip address via Metadata API
-API_ROOT="http://metadata.google.internal/computeMetadata/v1"
-COMMAND="instance/network-interfaces/0/access-configs/0/external-ip"
-CURRENT_ADDRESS=$(curl "${API_ROOT}/${COMMAND}" -H "Metadata-Flavor: Google")
+METADATA_SERVER="http://metadata.google.internal/computeMetadata/v1"
+QUERY="instance/network-interfaces/0/access-configs/0/external-ip"
+CURRENT_ADDRESS=$(curl "${METADATA_SERVER}/${QUERY}" -H "Metadata-Flavor: Google")
 
 # Update Cloud DNS
 TEMP=$(mktemp -u)
