@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Variables
 USER_NAME="cognitom"
@@ -37,8 +37,9 @@ git config --global user.email "$GIT_USER_EMAIL"
 # Startup scripts
 
 ## Tell my ip address to CloudDNS at startup
-curl https://raw.githubusercontent.com/cognitom/personal-env/master/remote/update-dns.sh > update-dns.sh
-curl https://raw.githubusercontent.com/cognitom/personal-env/master/remote/update-dns.service > update-dns.service
+GITHUB_REPO_ROOT=https://raw.githubusercontent.com/cognitom/personal-env/master
+curl ${GITHUB_REPO_ROOT}/remote/update-dns.sh > update-dns.sh
+curl ${GITHUB_REPO_ROOT}/remote/update-dns.service > update-dns.service
 chmod 755 update-dns.sh
 chmod 664 update-dns.service
 sudo chown root:root update-dns.sh update-dns.service
