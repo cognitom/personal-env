@@ -2,6 +2,8 @@
 
 # Settings
 PROJECT_NAME="personal-env"
+GITHUB_REPO="cognitom/personal-env"
+
 
 # Arguments
 INSTANCE_NAME="$1"
@@ -11,6 +13,12 @@ then
   echo "[Error] Instance name required." 1>&2
   exit 1
 fi
+
+# Download startup script
+TEMP=$(mktemp -u)
+CONTENTS_ROOT="https://raw.githubusercontent.com/${GITHUB_REPO}/master"
+curl ${CONTENTS_ROOT}/remote/startup.sh > "${TEMP}"
+cat "${TEMP}"
 
 # Get Service Account information
 #PROJECT_NAME=$(gcloud info --format='value(config.project)')
@@ -34,5 +42,7 @@ gcloud beta compute --project "${PROJECT_NAME}" \
   --image-project "ubuntu-os-cloud" \
   --boot-disk-size "10" \
   --boot-disk-type "pd-standard" \
-  --boot-disk-device-name "${INSTANCE_NAME}"
+  --boot-disk-device-name "${INSTANCE_NAME}" \
+  --metadata-from-file startup-script="${TEMP}"
   
+rm "${TEMP}"
