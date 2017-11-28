@@ -37,7 +37,7 @@ setup()
   npm i -g npm-check-updates
 
   # Bash
-  printf "\\n\\n# Simplify my prompt.\\nPS1_DEFAULT=\$PS1\\nPS1='\$ '" >> "${USERNAME}/.bashrc"
+  printf "\\n\\n# Simplify my prompt.\\nPS1_DEFAULT=\$PS1\\nPS1='\$ '" >> "/home/${USERNAME}/.bashrc"
 
   # Git
   git config --global user.name "Tsutomu Kawamura"

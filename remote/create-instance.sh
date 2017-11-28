@@ -18,7 +18,6 @@ fi
 TEMP=$(mktemp -u)
 CONTENTS_ROOT="https://raw.githubusercontent.com/${GITHUB_REPO}/master"
 curl ${CONTENTS_ROOT}/remote/startup.sh > "${TEMP}"
-cat "${TEMP}"
 
 # Get Service Account information
 #PROJECT_NAME=$(gcloud info --format='value(config.project)')
