@@ -2,6 +2,7 @@
 
 ZONE=localhost.zone
 ZONENAME=localhost-zone
+USERNAME=cognitom
 
 INITIALIZED_FLAG=".startup_script_initialized"
 
@@ -36,8 +37,7 @@ setup()
   npm i -g npm-check-updates
 
   # Bash
-  printf "\n\n# Simplify my prompt.\nPS1_DEFAULT=\$PS1\nPS1='\$ '" >> ~/.bashrc
-  source ~/.bashrc
+  printf "\\n\\n# Simplify my prompt.\\nPS1_DEFAULT=\$PS1\\nPS1='\$ '" >> "${USERNAME}/.bashrc"
 
   # Git
   git config --global user.name "Tsutomu Kawamura"
