@@ -2,6 +2,8 @@
 
 ## 1. Create VM instance on GCP
 
+Login to GCP, and open Google Cloud Shell.
+
 For example, to create an instance named "hello", run the command below: 
 
 ```bash
