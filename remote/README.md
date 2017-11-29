@@ -7,7 +7,7 @@ Login to GCP, and open Google Cloud Shell.
 For example, to create an instance named "hello", run the command below: 
 
 ```bash
-$ curl https://raw.githubusercontent.com/cognitom/personal-env/master/remote/create-instance.sh | sh -s hello
+$ curl https://raw.githubusercontent.com/cognitom/personal-env/master/remote/create.sh | sh -s hello
 ```
 
 
