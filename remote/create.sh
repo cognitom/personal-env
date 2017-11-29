@@ -17,7 +17,7 @@ fi
 # Download startup script
 TEMP=$(mktemp -u)
 CONTENTS_ROOT="https://raw.githubusercontent.com/${GITHUB_REPO}/master"
-curl ${CONTENTS_ROOT}/remote/startup.sh > "${TEMP}"
+curl ${CONTENTS_ROOT}/remote/startup-script.sh > "${TEMP}"
 
 # Get Service Account information
 #PROJECT_NAME=$(gcloud info --format='value(config.project)')
