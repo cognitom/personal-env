@@ -20,6 +20,7 @@ main()
   fi
 }
 
+# Installation and settings
 setup()
 {
   # Foundamental tools
@@ -44,6 +45,7 @@ setup()
   git config --global user.email "cognitom@gmail.com"
 }
 
+# Update on each startup except the first time
 update()
 {
   apt-get update
