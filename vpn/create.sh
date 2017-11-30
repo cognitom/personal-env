@@ -25,6 +25,7 @@ gcloud beta compute --project "${PROJECT_NAME}" \
   --zone "asia-northeast1-a" \
   --machine-type "g1-small" \
   --subnet "default" \
+  --can-ip-forward \
   --maintenance-policy "MIGRATE" \
   --service-account "${SERVICE_ACCOUNT}" \
   --scopes "https://www.googleapis.com/auth/cloud-platform" \
