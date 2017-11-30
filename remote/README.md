@@ -15,9 +15,14 @@ $ curl https://raw.githubusercontent.com/cognitom/personal-env/master/remote/cre
 
 Now, you can connect to your VM via `hello.localhost.zone`. Open Codeanywhere and choose `File > New Connection > SFTP - SSH` from the menu.
 
-- Hostname: `hello.localhost.zone`
+- Hostname: `public.hello.localhost.zone`
 - Username: `cognitom`
 - Public Key
+
+We have two sub-domain names:
+
+- `public.hello.localhost.zone` - for access from public
+- `hello.localhost.zone` - for access from local or VPN
 
 
 ## 3. Setup Linux environment
