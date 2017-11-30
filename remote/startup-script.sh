@@ -41,8 +41,8 @@ setup()
   printf "\\n\\n# Simplify my prompt.\\nPS1_DEFAULT=\$PS1\\nPS1='\$ '" >> "/home/${USERNAME}/.bashrc"
 
   # Git
-  git config --global user.name "Tsutomu Kawamura"
-  git config --global user.email "cognitom@gmail.com"
+  sudo -i -u "${USERNAME}" git config --global user.name "Tsutomu Kawamura"
+  sudo -i -u "${USERNAME}" git config --global user.email "cognitom@gmail.com"
 }
 
 # Update on each startup except the first time
