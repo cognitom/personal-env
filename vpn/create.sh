@@ -4,8 +4,15 @@
 PROJECT_NAME="personal-env"
 GITHUB_REPO="cognitom/personal-env"
 
+
 # Arguments
-INSTANCE_NAME=vpn
+INSTANCE_NAME="$1"
+
+if test "$INSTANCE_NAME" = ""
+then
+  echo "[Error] Instance name required." 1>&2
+  exit 1
+fi
 
 # Download startup script
 TEMP=$(mktemp -u)
