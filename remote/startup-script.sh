@@ -64,14 +64,21 @@ tell_my_ip_address_to_dns()
   METADATA_SERVER="http://metadata.google.internal/computeMetadata/v1"
   QUERY="instance/network-interfaces/0/access-configs/0/external-ip"
   CURRENT_ADDRESS=$(curl "${METADATA_SERVER}/${QUERY}" -H "Metadata-Flavor: Google")
+  
+  # Get the local ip address
+  PRIVATE_ADDRESS=$(hostname -i)
 
   # Update Cloud DNS
   TEMP=$(mktemp -u)
   gcloud dns record-sets transaction start -z "${ZONENAME}" --transaction-file="${TEMP}"
   gcloud dns record-sets transaction remove -z "${ZONENAME}" --transaction-file="${TEMP}" \
-    --name "${HOSTNAME}.${ZONE}." --ttl 300 --type A "$LAST_ADDRESS"
+    --name "public.${HOSTNAME}.${ZONE}." --ttl 300 --type A "$LAST_ADDRESS"
   gcloud dns record-sets transaction add -z "${ZONENAME}" --transaction-file="${TEMP}" \
-    --name "${HOSTNAME}.${ZONE}." --ttl 300 --type A "$CURRENT_ADDRESS"
+    --name "public.${HOSTNAME}.${ZONE}." --ttl 300 --type A "$CURRENT_ADDRESS"
+  gcloud dns record-sets transaction remove -z "${ZONENAME}" --transaction-file="${TEMP}" \
+    --name "${HOSTNAME}.${ZONE}." --ttl 300 --type A "$PRIVATE_ADDRESS"
+  gcloud dns record-sets transaction add -z "${ZONENAME}" --transaction-file="${TEMP}" \
+    --name "${HOSTNAME}.${ZONE}." --ttl 300 --type A "$PRIVATE_ADDRESS"
   gcloud dns record-sets transaction execute -z "${ZONENAME}" --transaction-file="${TEMP}"
 }
 
