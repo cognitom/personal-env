@@ -26,6 +26,9 @@ setup()
   # Foundamental tools
   apt-get update
   apt-get install -y build-essential
+  apt-get install -y chromium-browser
+  apt-get install -y openvpn
+  apt-get install -y unzip
 
   # Kryptonite CLI for key management
   curl https://krypt.co/kr | sh
@@ -33,9 +36,23 @@ setup()
   # Node
   curl -sL https://deb.nodesource.com/setup_8.x | bash
   apt-get install -y nodejs
+  
+  # MongoDB 3.6
+  apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2930ADAE8CAF5059EE73BB4B58712A2291FA4AD5
+  echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.6 multiverse" `
+    | tee /etc/apt/sources.list.d/mongodb-org-3.6.list
+  apt-get update
+  apt-get install -y mongodb-org
+  
+  # Yarn
+  curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+  echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+  apt-get update
+  apt-get install -y yarn
 
   # Tools via NPM
   npm i -g npm-check-updates
+  npm i -g polymer-cli --unsafe-perm
 
   # Bash
   printf "\\n\\n# Simplify my prompt.\\nPS1_DEFAULT=\$PS1\\nPS1='\$ '" >> "/home/${USERNAME}/.bashrc"
@@ -49,6 +66,7 @@ setup()
 update()
 {
   apt-get update
+  apt-get upgrade
   kr upgrade
 }
 
