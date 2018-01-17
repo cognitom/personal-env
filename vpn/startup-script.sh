@@ -29,10 +29,13 @@ setup()
   apt-get install -y build-essential
   
   # VPN
+  # sha2-truncbug modification is needed for Android 7
   VPN_USER="${USERNAME}"
   OUTPUT="/home/${VPN_USER}/vpn.log"
   CONTENTS_ROOT="https://raw.githubusercontent.com/${GITHUB_REPO}/master"
-  curl ${CONTENTS_ROOT}/vpnsetup.sh | sh > "${OUTPUT}"
+  curl ${CONTENTS_ROOT}/vpnsetup.sh | \
+    sed 's/sha2-truncbug=yes/sha2-truncbug=no/' | \
+    sh > "${OUTPUT}"
   chown cognitom:cognitom "${OUTPUT}"
 }
 
@@ -40,6 +43,7 @@ setup()
 update()
 {
   apt-get update
+  apt-get upgrade
 }
 
 tell_my_ip_address_to_dns()
