@@ -8,6 +8,7 @@
 ## Foundamental tools
 sudo apt-get update
 sudo apt-get install -y build-essential
+sudo apt-get install -y unzip
 
 ## Kryptonite CLI for key management
 # at this point, instlation will fail on Windows...
