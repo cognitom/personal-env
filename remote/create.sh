@@ -16,7 +16,7 @@ fi
 
 # Download startup script
 TEMP=$(mktemp -u)
-CONTENTS_ROOT="https://raw.githubusercontent.com/${GITHUB_REPO}/${GITHUB_REPO_BRACNH}"
+CONTENTS_ROOT="https://raw.githubusercontent.com/${GITHUB_REPO}/${GITHUB_REPO_BRANCH}"
 curl ${CONTENTS_ROOT}/remote/startup-script.sh > "${TEMP}"
 
 # Get Service Account information
