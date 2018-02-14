@@ -7,7 +7,7 @@ Login to GCP, and open Google Cloud Shell.
 For example, to create an instance named "hello", run the command below: 
 
 ```bash
-$ curl https://raw.githubusercontent.com/cognitom/personal-env/master/remote/create.sh | sh -s hello
+$ curl https://raw.githubusercontent.com/cognitom/personal-env/librize/remote/create.sh | sh -s hello
 ```
 
 
@@ -15,14 +15,14 @@ $ curl https://raw.githubusercontent.com/cognitom/personal-env/master/remote/cre
 
 Now, you can connect to your VM via `hello.localhost.zone`. Open Codeanywhere and choose `File > New Connection > SFTP - SSH` from the menu.
 
-- Hostname: `public.hello.localhost.zone`
+- Hostname: `public.hello.librize.org`
 - Username: `cognitom`
 - Public Key
 
 We have two sub-domain names:
 
-- `public.hello.localhost.zone` - for access from public
-- `hello.localhost.zone` - for access from local or VPN
+- `public.hello.librize.org` - for access from public
+- `hello.librize.org` - for access from local or VPN
 
 
 ## 3. Setup Linux environment
