@@ -5,5 +5,5 @@
 Login to GCP, and open Google Cloud Shell. Run the command below: 
 
 ```bash
-$ curl https://raw.githubusercontent.com/cognitom/personal-env/master/vpn/create.sh | sh -s whatyoulike
+$ curl https://raw.githubusercontent.com/cognitom/personal-env/librize/vpn/create.sh | sh -s whatyoulike
 ```
