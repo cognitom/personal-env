@@ -1,8 +1,9 @@
 #!/bin/sh
 
 # Settings
-PROJECT_NAME="personal-env"
+PROJECT_NAME="librize-dev"
 GITHUB_REPO="cognitom/personal-env"
+GITHUB_REPO_BRANCH="librize"
 
 
 # Arguments
@@ -16,7 +17,7 @@ fi
 
 # Download startup script
 TEMP=$(mktemp -u)
-CONTENTS_ROOT="https://raw.githubusercontent.com/${GITHUB_REPO}/master"
+CONTENTS_ROOT="https://raw.githubusercontent.com/${GITHUB_REPO}/${GITHUB_REPO_BRANCH}"
 curl ${CONTENTS_ROOT}/vpn/startup-script.sh > "${TEMP}"
 
 # Get Service Account information
