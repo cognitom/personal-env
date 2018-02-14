@@ -1,7 +1,7 @@
 #!/bin/sh
 
-ZONE=localhost.zone
-ZONENAME=localhost-zone
+ZONE=librize.org
+ZONENAME=librize-org
 USERNAME=cognitom
 
 INITIALIZED_FLAG=".startup_script_initialized"
