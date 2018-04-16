@@ -37,7 +37,7 @@ gcloud beta compute --project "${PROJECT_NAME}" \
   --service-account "${SERVICE_ACCOUNT}" \
   --scopes "https://www.googleapis.com/auth/cloud-platform" \
   --min-cpu-platform "Automatic" \
-  --image "ubuntu-1604-xenial-v20171121a" \
+  --image "ubuntu-1604-xenial-v20180405" \
   --image-project "ubuntu-os-cloud" \
   --boot-disk-size "10" \
   --boot-disk-type "pd-standard" \
