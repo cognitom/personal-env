@@ -3,7 +3,7 @@
 ZONE=localhost.zone
 ZONENAME=localhost-zone
 USERNAME=cognitom
-GITHUB_REPO="${USERNAME}/setup-ipsec-vpn"
+GITHUB_REPO="hwdsl2/setup-ipsec-vpn"
 
 INITIALIZED_FLAG=".startup_script_initialized"
 
