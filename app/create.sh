@@ -2,26 +2,12 @@
 
 # Settings
 PROJECT_NAME="personal-env"
-DNS_ZONE_NAME="localhost-zone"
 GITHUB_REPO="cognitom/personal-env"
-
-# Arguments
-INSTANCE_NAME="$1"
-
-if test "$INSTANCE_NAME" = ""
-then
-  echo "[Error] Instance name required." 1>&2
-  exit 1
-fi
+INSTANCE_NAME="app"
 
 # Startup script
 CONTENTS_ROOT="https://raw.githubusercontent.com/${GITHUB_REPO}/master"
-STARTUP_SCRIPT_URL="${CONTENTS_ROOT}/remote/startup-script.sh"
-
-# Download startup script
-TEMP=$(mktemp -u)
-CONTENTS_ROOT="https://raw.githubusercontent.com/${GITHUB_REPO}/master"
-curl ${CONTENTS_ROOT}/remote/startup-script.sh > "${TEMP}"
+STARTUP_SCRIPT_URL="${CONTENTS_ROOT}/app/startup-script.sh"
 
 # Get Service Account information
 SERVICE_ACCOUNT=$(\
@@ -36,17 +22,14 @@ gcloud beta compute --project "${PROJECT_NAME}" \
   --zone "asia-northeast1-a" \
   --machine-type "g1-small" \
   --subnet "default" \
+  --can-ip-forward \
+  --tags "vpn" \
   --maintenance-policy "MIGRATE" \
   --service-account "${SERVICE_ACCOUNT}" \
-  --scopes "https://www.googleapis.com/auth/cloud-platform" \
   --min-cpu-platform "Automatic" \
-  --image-family "ubuntu-1604-lts" \
-  --image-project "ubuntu-os-cloud" \
+  --image-family "cos-stable" \
+  --image-project "cos-cloud" \
   --boot-disk-size "10" \
   --boot-disk-type "pd-standard" \
   --boot-disk-device-name "${INSTANCE_NAME}" \
-  --metadata \
-    dnsZoneName="${DNS_ZONE_NAME}",\
-    startup-script-url="${STARTUP_SCRIPT_URL}"
-  
-rm "${TEMP}"
+  --metadata startup-script-url="${STARTUP_SCRIPT_URL}"

@@ -19,12 +19,12 @@ Be cloud. We can code on our server literally. I don't wanna care about my local
 
 ## Tools on Private Servers
 
-- [adminMongo](https://adminmongo.markmoffat.com/)
+- [Portainer](https://github.com/portainer/portainer)
+- [Nosqlclient](https://github.com/nosqlclient/nosqlclient)
 
 ## Tools on Chrome
 
-- [Chrome MySQL Admin](https://chrome.google.com/webstore/detail/chrome-mysql-admin/ndgnpnpakfcdjmpgmcaknimfgcldechn/related?hl=en)
-- VNC Viewere for Google Chrome
+- VNC Viewer for Google Chrome
 
 ## Services for Development
 
@@ -40,7 +40,7 @@ Are you still paying tax to Adobe?
 - Figma
 - Gravit Designer
 - Google Docs / Sheet / Slide
-- Google Paper
+- Dropbox Paper
 - Grammarly
 
 and more.

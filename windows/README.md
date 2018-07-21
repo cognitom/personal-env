@@ -38,10 +38,14 @@ Run [init.sh](init.sh) script on Hyper:
 $ https://raw.githubusercontent.com/cognitom/personal-env/master/windows/init.sh | sh
 ```
 
-Do some tasks which need interaction.
+## 4. VPN
 
-```bash
-$ gcloud init
+Setup VPN. Then, change the Windows policy a little bit. Open PowerShell as Administrator and run:
+
 ```
+REG ADD HKLM\SYSTEM\CurrentControlSet\Services\PolicyAgent /v AssumeUDPEncapsulationContextOnSendRule /t REG_DWORD /d 0x2 /f
+```
+
+Restart the Windows.
 
 That's it!

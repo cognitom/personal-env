@@ -1,23 +1,13 @@
-#!/bin/sh
+#!/bin/bash
 
 # Settings
 PROJECT_NAME="personal-env"
-GITHUB_REPO="cognitom/personal-env"
-
+INSTANCE_NAME="vpn"
 
 # Arguments
-INSTANCE_NAME="$1"
-
-if test "$INSTANCE_NAME" = ""
-then
-  echo "[Error] Instance name required." 1>&2
-  exit 1
-fi
-
-# Download startup script
-TEMP=$(mktemp -u)
-CONTENTS_ROOT="https://raw.githubusercontent.com/${GITHUB_REPO}/master"
-curl ${CONTENTS_ROOT}/vpn/startup-script.sh > "${TEMP}"
+VPN_IPSEC_PSK="$1"
+VPN_USER="$2"
+VPN_PASSWORD="$3"
 
 # Get Service Account information
 SERVICE_ACCOUNT=$(\
@@ -25,23 +15,29 @@ SERVICE_ACCOUNT=$(\
     service-accounts list \
     --limit 1 \
     --format "value(email)")
+    
+STARTUP_SCRIPT=$(echo -e "#! /bin/bash\nmodprobe af_key")
 
 # Create a instance
 gcloud beta compute --project "${PROJECT_NAME}" \
-  instances create "${INSTANCE_NAME}" \
+  instances create-with-container "${INSTANCE_NAME}" \
   --zone "asia-northeast1-a" \
-  --machine-type "g1-small" \
+  --machine-type "f1-micro" \
   --subnet "default" \
+  --address "35.200.42.215" \
+  --network-tier "PREMIUM" \
+  --metadata startup-script="${STARTUP_SCRIPT}" \
   --can-ip-forward \
   --maintenance-policy "MIGRATE" \
   --service-account "${SERVICE_ACCOUNT}" \
-  --scopes "https://www.googleapis.com/auth/cloud-platform" \
-  --min-cpu-platform "Automatic" \
-  --image "ubuntu-1604-xenial-v20180509" \
-  --image-project "ubuntu-os-cloud" \
-  --boot-disk-size "20" \
+  --tags "vpn" \
+  --image-family "cos-stable" \
+  --image-project "cos-cloud" \
+  --boot-disk-size "10" \
   --boot-disk-type "pd-standard" \
   --boot-disk-device-name "${INSTANCE_NAME}" \
-  --metadata-from-file startup-script="${TEMP}"
-  
-rm "${TEMP}"
+  --container-image "docker.io/hwdsl2/ipsec-vpn-server" \
+  --container-restart-policy "always" \
+  --container-privileged \
+  --container-env VPN_IPSEC_PSK="${VPN_IPSEC_PSK}",VPN_USER="${VPN_USER}",VPN_PASSWORD="${VPN_PASSWORD}" \
+  --container-mount-host-path mount-path="/lib/modules",host-path="/lib/modules",mode="ro"
