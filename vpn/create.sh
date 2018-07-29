@@ -24,7 +24,7 @@ gcloud beta compute --project "${PROJECT_NAME}" \
   --zone "asia-northeast1-a" \
   --machine-type "f1-micro" \
   --subnet "default" \
-  --address "35.200.42.215" \
+  --address "xxx.xxx.xxx.xxx" \
   --network-tier "PREMIUM" \
   --metadata startup-script="${STARTUP_SCRIPT}" \
   --can-ip-forward \
