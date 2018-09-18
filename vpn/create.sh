@@ -5,9 +5,10 @@ PROJECT_NAME="personal-env"
 INSTANCE_NAME="vpn"
 
 # Arguments
-VPN_IPSEC_PSK="$1"
-VPN_USER="$2"
-VPN_PASSWORD="$3"
+IP_ADDRESS="$1"
+VPN_IPSEC_PSK="$2"
+VPN_USER="$3"
+VPN_PASSWORD="$4"
 
 # Get Service Account information
 SERVICE_ACCOUNT=$(\
@@ -24,7 +25,7 @@ gcloud beta compute --project "${PROJECT_NAME}" \
   --zone "asia-northeast1-a" \
   --machine-type "f1-micro" \
   --subnet "default" \
-  --address "xxx.xxx.xxx.xxx" \
+  --address "${IP_ADDRESS}" \
   --network-tier "PREMIUM" \
   --metadata startup-script="${STARTUP_SCRIPT}" \
   --can-ip-forward \
