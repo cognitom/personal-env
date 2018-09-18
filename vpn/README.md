@@ -5,7 +5,7 @@
 Login to GCP, and open Google Cloud Shell. Run the command below: 
 
 ```bash
-$ curl https://raw.githubusercontent.com/cognitom/personal-env/master/vpn/create.sh | bash -s YOUR_VPN_IPSEC_PSK YOUR_VPN_USER YOUR_VPN_PASSWORD
+$ curl https://raw.githubusercontent.com/cognitom/personal-env/master/vpn/create.sh | bash -s IP_ADDRESS YOUR_VPN_IPSEC_PSK YOUR_VPN_USER YOUR_VPN_PASSWORD
 ```
 
 ## Restart the container
