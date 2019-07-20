@@ -1,4 +1,4 @@
-# App
+# Workspace
 
 ## 1. Create VM instance on GCP
 
