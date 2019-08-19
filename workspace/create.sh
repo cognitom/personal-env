@@ -5,10 +5,6 @@ PROJECT_NAME="personal-env"
 GITHUB_REPO="cognitom/personal-env"
 INSTANCE_NAME="workspace"
 
-# Startup script
-CONTENTS_ROOT="https://raw.githubusercontent.com/${GITHUB_REPO}/master"
-STARTUP_SCRIPT_URL="${CONTENTS_ROOT}/${INSTANCE_NAME}/startup-script.sh"
-
 # Get Service Account information
 SERVICE_ACCOUNT=$(\
   gcloud iam --project "${PROJECT_NAME}" \
@@ -31,5 +27,4 @@ gcloud beta compute --project "${PROJECT_NAME}" \
   --image-project "cos-cloud" \
   --boot-disk-size "100" \
   --boot-disk-type "pd-standard" \
-  --boot-disk-device-name "${INSTANCE_NAME}" \
-  --metadata startup-script-url="${STARTUP_SCRIPT_URL}"
+  --boot-disk-device-name "${INSTANCE_NAME}"
