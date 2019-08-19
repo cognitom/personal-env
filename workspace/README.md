@@ -10,7 +10,7 @@ $ curl https://raw.githubusercontent.com/cognitom/personal-env/master/workspace/
 
 ## 2. Add a DNS record
 
-Add a new DNS record for the private IP address in Cloud DNS.
+Add a new DNS record for the private IP address manually in Cloud DNS.
 
 ## 3. Connect to VM
 
