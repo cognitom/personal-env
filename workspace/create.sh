@@ -5,6 +5,9 @@ PROJECT_NAME="personal-env"
 GITHUB_REPO="cognitom/personal-env"
 INSTANCE_NAME="workspace"
 
+# Arguments
+IP_ADDRESS="$1"
+
 # Get Service Account information
 SERVICE_ACCOUNT=$(\
   gcloud iam --project "${PROJECT_NAME}" \
@@ -18,6 +21,7 @@ gcloud beta compute --project "${PROJECT_NAME}" \
   --zone "asia-northeast1-a" \
   --machine-type "n1-standard" \
   --subnet "default" \
+  --address "${IP_ADDRESS}" \
   --can-ip-forward \
   --tags "vpn" \
   --maintenance-policy "MIGRATE" \
