@@ -7,7 +7,7 @@ INSTANCE_NAME="workspace"
 
 # Startup script
 CONTENTS_ROOT="https://raw.githubusercontent.com/${GITHUB_REPO}/master"
-STARTUP_SCRIPT_URL="${CONTENTS_ROOT}/workspace/startup-script.sh"
+STARTUP_SCRIPT_URL="${CONTENTS_ROOT}/${INSTANCE_NAME}/startup-script.sh"
 
 # Get Service Account information
 SERVICE_ACCOUNT=$(\
@@ -20,7 +20,7 @@ SERVICE_ACCOUNT=$(\
 gcloud beta compute --project "${PROJECT_NAME}" \
   instances create "${INSTANCE_NAME}" \
   --zone "asia-northeast1-a" \
-  --machine-type "g1-small" \
+  --machine-type "n1-standard" \
   --subnet "default" \
   --can-ip-forward \
   --tags "vpn" \
