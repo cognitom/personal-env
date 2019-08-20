@@ -5,7 +5,7 @@
 Login to GCP, and open Google Cloud Shell.
 
 ```bash
-$ curl https://raw.githubusercontent.com/cognitom/personal-env/master/workspace/create.sh | sh
+$ curl https://raw.githubusercontent.com/cognitom/personal-env/master/workspace/create.sh | bash -s IP_ADDRESS
 ```
 
 ## 2. Add a DNS record
