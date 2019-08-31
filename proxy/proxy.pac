@@ -1,3 +1,7 @@
 function FindProxyForURL(url, host) {
-  return "SOCKS5 127.0.0.1:1080";
+  if (shExpMatch(host, "workspace.localhost.zone")) {
+    return "SOCKS5 localhost:1080";
+  }
+  
+  return "DIRECT";
 }
